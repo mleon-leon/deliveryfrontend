@@ -3,9 +3,6 @@ import {Input} from "../ui/input.tsx";
 import {cn} from "../../lib/utils.ts";
 
 
-// import { Input } from "@/components/ui/input";
-// import { cn } from "@/lib/utils";
-
 type FormInputProps = {
     label: string;
     type?: React.HTMLInputTypeAttribute;

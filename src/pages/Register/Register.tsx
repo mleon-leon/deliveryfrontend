@@ -27,7 +27,6 @@ export default function Register() {
 
         alert("Usuario creado correctamente");
 
-        // 🔁 Redirigir a Login
         navigate("/");
     };
 

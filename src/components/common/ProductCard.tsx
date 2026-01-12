@@ -1,20 +1,23 @@
 import { motion } from "framer-motion";
 import { PrimaryButton } from "./PrimaryButton";
+import { useCart } from "../../context/CartContext";
 
 type ProductCardProps = {
+    id: number;
     name: string;
-    price: string;
+    price: number;
     image: string;
 };
 
-export function ProductCard({ name, price, image }: ProductCardProps) {
+export function ProductCard({ id, name, price, image }: ProductCardProps) {
+    const { addToCart } = useCart();
+
     return (
         <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
             className="bg-white rounded-2xl shadow-md overflow-hidden"
         >
-            {/* Imagen */}
             <div className="relative overflow-hidden">
                 <motion.img
                     src={image}
@@ -25,14 +28,26 @@ export function ProductCard({ name, price, image }: ProductCardProps) {
                 />
             </div>
 
-            {/* Contenido */}
             <div className="p-4 flex flex-col gap-2">
                 <h3 className="text-lg font-semibold text-neutral-800">
                     {name}
                 </h3>
-                <p className="text-pink-600 font-bold">{price}</p>
 
-                <PrimaryButton className="mt-2">
+                <p className="text-pink-600 font-bold">
+                    ${price.toFixed(2)}
+                </p>
+
+                <PrimaryButton
+                    className="mt-2"
+                    onClick={() =>
+                        addToCart({
+                            id,
+                            name,
+                            price,
+                            image,
+                        })
+                    }
+                >
                     Agregar al carrito
                 </PrimaryButton>
             </div>

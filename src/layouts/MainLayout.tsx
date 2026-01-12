@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import {Header} from "../components/layout/Header";
+import Header from "../components/layout/Header.tsx";
 
-export function MainLayout() {
+export default function MainLayout() {
     return (
-        <div className="min-h-screen bg-neutral-100">
+        <>
             <Header />
-            <main className="pt-4">
+            <main>
                 <Outlet />
             </main>
-        </div>
+        </>
     );
 }
